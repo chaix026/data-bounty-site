@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="relative bg-zinc-50 py-20 lg:py-32 overflow-hidden">
@@ -13,10 +14,10 @@
     </p>
     
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/services" class="inline-block bg-brand-maroon text-white font-semibold px-8 py-3 rounded hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+      <a href={base + '/services'} class="inline-block bg-brand-maroon text-white font-semibold px-8 py-3 rounded hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
         View Solutions
       </a>
-      <a href="/contact" class="inline-block border-2 border-brand-maroon text-brand-maroon font-semibold px-8 py-3 rounded hover:bg-brand-maroon hover:text-white transition-all">
+      <a href={base + '/contact'} class="inline-block border-2 border-brand-maroon text-brand-maroon font-semibold px-8 py-3 rounded hover:bg-brand-maroon hover:text-white transition-all">
         Contact Us
       </a>
     </div>
