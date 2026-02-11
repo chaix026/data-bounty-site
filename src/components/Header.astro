@@ -1,0 +1,30 @@
+---
+const navItems = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-brand-maroon text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/Data Bounty LLC-mg-white.png" alt="Data Bounty LLC Logo" class="h-10 w-auto" />
+      <span class="font-bold text-xl tracking-wide hidden sm:block">DATA BOUNTY LLC</span>
+    </a>
+    
+    <nav class="hidden md:flex gap-6">
+      {navItems.map(item => (
+        <a href={item.href} class="hover:text-brand-gold transition-colors font-medium">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Button (Placeholder for interactivity if needed, or simple CSS menu) -->
+    <a href="/contact" class="md:hidden bg-brand-gold text-brand-maroon px-4 py-1.5 rounded font-bold text-sm">
+      Contact
+    </a>
+  </div>
+</header>

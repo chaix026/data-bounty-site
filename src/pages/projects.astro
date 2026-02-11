@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const sortedProjects = projects.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+
+const projectsWithContent = await Promise.all(sortedProjects.map(async (project) => {
+  const { Content } = await project.render();
+  return { ...project, Content };
+}));
+---
+
+<Layout title="Projects | Data Bounty LLC" description="Portfolio of data science and economic consulting projects by Data Bounty LLC.">
+	<section class="py-16 bg-zinc-50">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl font-bold text-brand-maroon text-center mb-4">Selected Projects</h1>
+			<p class="text-gray-600 text-center max-w-2xl mx-auto mb-16">
+				A look at recent work in Retail Media, Ag-Tech, and Bio-Economic Risk.
+			</p>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{projectsWithContent.map(project => (
+					<Card title={project.data.title} tags={project.data.tags} class="h-full flex flex-col">
+						<div class="prose prose-sm text-gray-600 mb-4 flex-grow">
+							<project.Content />
+						</div>
+					</Card>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
