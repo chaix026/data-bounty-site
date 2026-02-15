@@ -1,59 +1,64 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Contact',
+};
 ---
 
-<Layout title="Contact | Data Bounty LLC" description="Get in touch with Data Bounty LLC for your data science and economic consulting needs.">
-	<section class="py-16 bg-white">
-		<div class="container mx-auto px-4 max-w-4xl">
-			<h1 class="text-4xl font-bold text-brand-maroon text-center mb-8">Get In Touch</h1>
-			
-			<div class="flex justify-center">
-				<!-- Contact Info -->
-				<div class="bg-zinc-50 p-8 rounded-lg shadow-sm border border-gray-100 w-full max-w-lg">
-					<h2 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
-					<div class="space-y-6">
-						<div class="flex items-start gap-4">
-							<div class="text-brand-gold mt-1">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-								</svg>
-							</div>
-							<div>
-								<div class="font-bold text-gray-800">Email</div>
-								<a href="mailto:databountyllc@gmail.com" class="text-brand-maroon hover:underline">databountyllc@gmail.com</a>
-							</div>
-						</div>
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
 
-						<div class="flex items-start gap-4">
-							<div class="text-brand-gold mt-1">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-								</svg>
-							</div>
-							<div>
-								<div class="font-bold text-gray-800">Location</div>
-								<p class="text-gray-600">United State</p>
-							</div>
-						</div>
+  <HeroText tagline="Contact" title="Let's Connect!" />
 
-						<div class="flex items-start gap-4">
-							<div class="text-brand-gold mt-1">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-								</svg>
-							</div>
-							<div>
-								<div class="font-bold text-gray-800">Social</div>
-								<div class="flex gap-4 mt-1">
-									<a href="#" class="text-gray-500 hover:text-brand-maroon transition-colors">LinkedIn</a>
-									<a href="#" class="text-gray-500 hover:text-brand-maroon transition-colors">GitHub</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-    </section>
+  <ContactUs
+    title="Send us a message today!"
+    subtitle="We'd love to hear from you. Whether you have a question about our services, pricing, or anything else, our team is ready to answer all your questions."
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="We are here to help!"
+    items={[
+      {
+        title: 'Phone',
+        description: '+1 (555) 123-4567',
+        icon: 'tabler:phone',
+      },
+      {
+        title: 'Email',
+        description: 'info@databounty.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Location',
+        description: 'Owatonna, MN (Serving Clients Globally)',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
 </Layout>

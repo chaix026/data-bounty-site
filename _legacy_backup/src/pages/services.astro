@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Services | Data Bounty LLC" description="Expert consulting in Marketing Science, Applied Economics, and Data Science.">
+	<PageHeader title="Our Expertise" subtitle="Comprehensive solutions bridging the gap between advanced analytics and business strategy." />
+
+	<section class="py-16 bg-zinc-50">
+		<div class="container mx-auto px-4">
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Marketing Science -->
+				<Card title="Marketing Science & Attribution" tags={['MMM', 'Geo-Lift', 'ROAS']}>
+					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
+						<li>Marketing Mix Modeling (MMM)</li>
+						<li>Geo-Experimentation (TBR-MM, Synthetic Control)</li>
+						<li>ROAS (Return on Ad Spend) Optimization</li>
+						<li>Customer Segmentation & Lift Analysis</li>
+					</ul>
+				</Card>
+
+				<!-- Applied Economics -->
+				<Card title="Applied Economics & Policy" tags={['Impact Assessment', 'Risk', 'Cost-Benefit']}>
+					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
+						<li>Impact Assessment & Program Evaluation</li>
+						<li>Risk Management Modeling</li>
+						<li>Cost-Benefit Tradeoff Analysis</li>
+						<li>Supply Chain & Agribusiness Insights</li>
+					</ul>
+				</Card>
+
+				<!-- Data Science -->
+				<Card title="Data Science & Engineering" tags={['Spatial Analytics', 'Bayesian', 'Pipelines']}>
+					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
+						<li>Spatial Data Analytics & Visualization</li>
+						<li>Bayesian Structural Time-series Modeling</li>
+						<li>Pipeline Automation (Python/R/SQL)</li>
+						<li>Big Data Processing & Supercomputing</li>
+					</ul>
+				</Card>
+			</div>
+		</div>
+	</section>
+</Layout>

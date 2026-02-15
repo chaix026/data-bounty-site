@@ -1,46 +1,111 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import PageHeader from '../components/PageHeader.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Services',
+};
 ---
 
-<Layout title="Services | Data Bounty LLC" description="Expert consulting in Marketing Science, Applied Economics, and Data Science.">
-	<PageHeader title="Our Expertise" subtitle="Comprehensive solutions bridging the gap between advanced analytics and business strategy." />
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
 
-	<section class="py-16 bg-zinc-50">
-		<div class="container mx-auto px-4">
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<!-- Marketing Science -->
-				<Card title="Marketing Science & Attribution" tags={['MMM', 'Geo-Lift', 'ROAS']}>
-					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
-						<li>Marketing Mix Modeling (MMM)</li>
-						<li>Geo-Experimentation (TBR-MM, Synthetic Control)</li>
-						<li>ROAS (Return on Ad Spend) Optimization</li>
-						<li>Customer Segmentation & Lift Analysis</li>
-					</ul>
-				</Card>
+  <Hero
+    tagline="Services"
+    title="What We Do"
+    subtitle="Comprehensive data analytics, causal inference, and economic consulting services."
+  />
 
-				<!-- Applied Economics -->
-				<Card title="Applied Economics & Policy" tags={['Impact Assessment', 'Risk', 'Cost-Benefit']}>
-					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
-						<li>Impact Assessment & Program Evaluation</li>
-						<li>Risk Management Modeling</li>
-						<li>Cost-Benefit Tradeoff Analysis</li>
-						<li>Supply Chain & Agribusiness Insights</li>
-					</ul>
-				</Card>
+  <!-- Features2 Widget ************** -->
 
-				<!-- Data Science -->
-				<Card title="Data Science & Engineering" tags={['Spatial Analytics', 'Bayesian', 'Pipelines']}>
-					<ul class="space-y-2 text-gray-600 text-sm list-disc list-inside mt-4">
-						<li>Spatial Data Analytics & Visualization</li>
-						<li>Bayesian Structural Time-series Modeling</li>
-						<li>Pipeline Automation (Python/R/SQL)</li>
-						<li>Big Data Processing & Supercomputing</li>
-					</ul>
-				</Card>
-			</div>
-		</div>
-	</section>
+  <Features2
+    title="Marketing Science & Attribution"
+    columns={2}
+    items={[
+      {
+        title: 'Marketing Mix Modeling (MMM)',
+        description: 'Optimize marketing spend and understand the impact of various channels on sales.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Geo-Experimentation',
+        description: 'Time-Based Regression (TBR-MM) and Synthetic Control methods for measuring incremental lift.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'ROAS Optimization',
+        description: 'Maximize Return on Ad Spend through rigorous causal analysis.',
+        icon: 'tabler:currency-dollar',
+      },
+      {
+        title: 'Customer Segmentation',
+        description: 'Advanced segmentation and lift analysis to target the right audience.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Applied Economics & Policy Analysis"
+    columns={2}
+    isDark={false}
+    items={[
+      {
+        title: 'Impact Assessment',
+        description: 'Program evaluation and causal impact analysis for policy decisions.',
+        icon: 'tabler:gavel',
+      },
+      {
+        title: 'Risk Management Modeling',
+        description: 'Quantify and mitigate risks through robust economic models.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Cost-Benefit Analysis',
+        description: 'Tradeoff analysis to inform strategic investment decisions.',
+        icon: 'tabler:scale',
+      },
+      {
+        title: 'Supply Chain Insights',
+        description: 'Agribusiness and supply chain optimization using economic principles.',
+        icon: 'tabler:truck-delivery',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Data Science & Engineering"
+    columns={2}
+    items={[
+      {
+        title: 'Spatial Data Analytics',
+        description: 'Advanced visualization and analysis of geospatial data.',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Bayesian Modeling',
+        description: 'Structural time-series modeling for complex forecasting.',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Pipeline Automation',
+        description: 'Robust data pipelines using Python, R, and SQL.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Big Data Processing',
+        description: 'Scalable solutions for processing large datasets and supercomputing.',
+        icon: 'tabler:server',
+      },
+    ]}
+  />
 </Layout>

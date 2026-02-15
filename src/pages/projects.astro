@@ -1,33 +1,90 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import { getCollection } from 'astro:content';
-import PageHeader from '../components/PageHeader.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
 
-const projects = await getCollection('projects');
-const sortedProjects = projects.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
-
-const projectsWithContent = await Promise.all(sortedProjects.map(async (project) => {
-  const { Content } = await project.render();
-  return { ...project, Content };
-}));
+const metadata = {
+  title: 'Projects',
+};
 ---
 
-<Layout title="Projects | Data Bounty LLC" description="Portfolio of data science and economic consulting projects by Data Bounty LLC.">
-	<PageHeader title="Selected Projects" subtitle="A look at recent work in Retail Media, Ag-Tech, and Bio-Economic Risk." />
-	
-	<section class="py-16 bg-zinc-50">
-		<div class="container mx-auto px-4">
-			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{projectsWithContent.map(project => (
-					<Card title={project.data.title} tags={project.data.tags} class="h-full flex flex-col">
-						<div class="prose prose-sm text-gray-600 mb-4 flex-grow">
-							<project.Content />
-						</div>
-					</Card>
-				))}
-			</div>
-		</div>
-	</section>
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Projects"
+    title="Case Studies"
+    subtitle="Our portfolio of impactful projects in retail, agriculture, and global economics."
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    title="Retail Media Causal Attribution"
+    items={[
+      {
+        title: 'Summary',
+        description:
+          'Designed and operationalized a suite of causal inference frameworks (Geo-filtered A/B tests, DiD) to quantify the incremental lift of AI-driven campaigns.',
+      },
+      {
+        title: 'Outcome',
+        description:
+          'Delivered granular channel-level ROAS insights for a major retailer, optimizing resource allocation across beauty, fashion, and pharmacy departments.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Retail Media Project',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    title="Ag-Tech Risk & Impact Assessment"
+    items={[
+      {
+        title: 'Summary',
+        description:
+          'Led an interdisciplinary lab to analyze spatiotemporal dynamics of crop production. Implemented hierarchical random coefficient models to identify heterogeneous causal effects of inputs on yield.',
+      },
+      {
+        title: 'Outcome',
+        description:
+          'Produced policy-relevant findings for public and private partners regarding nitrogen fertilizer efficiency and environmental impact.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      alt: 'Ag-Tech Project',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    title="Global Bio-Economic Risk Modeling"
+    items={[
+      {
+        title: 'Summary',
+        description: 'Developed probabilistic bio-economic assessments of biotic risks in global agriculture.',
+      },
+      {
+        title: 'Outcome',
+        description:
+          'Created models to identify causal drivers for crop insurance from long-term, large-scale panel data, assisting in risk prediction for wheat production.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Global Risk Project',
+    }}
+  />
 </Layout>

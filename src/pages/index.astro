@@ -1,48 +1,75 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Card from '../components/Card.astro';
+import Layout from '~/layouts/PageLayout.astro';
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  ignoreTitleTemplate: true,
+};
 ---
 
-<Layout title="Data Bounty LLC | Applied Economics & Data Science Consulting">
-	<Hero />
-	
-	<section class="py-16 md:py-24 bg-white">
-		<div class="container mx-auto px-4">
-			<h2 class="text-3xl md:text-4xl font-bold text-brand-maroon text-center mb-16">
-				Core Competencies
-			</h2>
-			
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-				<Card title="Causal Inference" class="h-full">
-					<p class="text-gray-600">
-						Moving beyond simple correlation to measure true impact using state-of-the-art methods like A/B testing, Difference-in-Differences (DiD), and Synthetic Control.
-					</p>
-				</Card>
-				
-				<Card title="Economic Modeling" class="h-full">
-					<p class="text-gray-600">
-						Developing custom production functions, demand estimation systems, and rigorous benefit-cost analyses to inform strategic decision-making.
-					</p>
-				</Card>
-				
-				<Card title="Strategic Impact" class="h-full">
-					<p class="text-gray-600">
-						Translating complex technical findings into clear, actionable business strategies specifically tailored for the retail and agribusiness sectors.
-					</p>
-				</Card>
-			</div>
-		</div>
-	</section>
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
 
-	<section class="py-16 bg-zinc-50 border-t border-zinc-200">
-		<div class="container mx-auto px-4 text-center">
-			<h3 class="text-2xl font-bold text-gray-800 mb-6">Ready to leverage your data?</h3>
-			<a href={base + '/contact'} class="inline-block bg-brand-gold text-white font-bold px-8 py-3 rounded hover:bg-opacity-90 transition-colors shadow">
-				Get in Touch
-			</a>
-		</div>
-	</section>
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View Solutions',
+        href: '/services',
+        icon: 'tabler:arrow-right',
+      },
+    ]}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Data Bounty Hero Image' }}
+  >
+    <Fragment slot="title">
+      Turning Complex Data into <span class="text-accent dark:text-white highlight">Actionable Economic Insight</span>.
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Specialized consulting in Causal Inference, Econometric Modeling, and Spatial Analysis.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    tagline="Value Proposition"
+    title="Why Data Bounty?"
+    subtitle="Bridging the gap between theoretical econometrics and real-world business challenges."
+    items={[
+      {
+        title: 'Causal Inference',
+        description:
+          'Moving beyond correlation to measure true impact using A/B testing, DiD, and Synthetic Control methods.',
+        icon: 'tabler:chart-arrows',
+      },
+      {
+        title: 'Economic Modeling',
+        description:
+          'Custom production functions, demand estimation, and benefit-cost analysis.',
+        icon: 'tabler:math-function',
+      },
+      {
+        title: 'Strategic Impact',
+        description:
+          'Translating technical findings into business strategies for retail and agribusiness sectors.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+  <!-- Optional: Add a brief About section or similar if desired, but adhering to spec for now -->
 </Layout>
