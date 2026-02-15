@@ -23,7 +23,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Contact Us', href: getPermalink('/contact'), variant: 'primary' }],
+  actions: [],
 };
 
 export const footerData = {
