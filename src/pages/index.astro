@@ -30,14 +30,20 @@ const metadata = {
         icon: 'tabler:arrow-right',
       },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Data Bounty Hero Image' }}
   >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#6E141D] dark:bg-[#6E141D]">
+        <img src="/bg-gemini-2.png" alt="Data Background" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#6E141D]/90 to-[#6E141D]/70"></div>
+      </div>
+    </Fragment>
     <Fragment slot="title">
-      Turning Complex Data into <span class="text-accent dark:text-white highlight">Actionable Economic Insight</span>.
+      <span class="text-white">Turning Complex Data into</span> <br />
+      <span class="text-accent highlight">Actionable Insights</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Specialized consulting in Causal Inference, Econometric Modeling, and Spatial Analysis.
+      <span class="text-gray-200">Specialized consulting in Causal Inference, Econometric Modeling, and Spatial Analysis.</span>
     </Fragment>
   </Hero>
 
